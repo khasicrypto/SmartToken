@@ -12,7 +12,7 @@ No staking required in this smart contract. Fees are awarded by the Contract.
 
  // SPDX-License-Identifier: Unlicensed
 
-pragma solidity ^0.6.2;
+pragma solidity ^0.6.12;
 
 interface IERC20 {
 
