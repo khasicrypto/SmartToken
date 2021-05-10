@@ -1,9 +1,9 @@
 /*
- * Copyright © 2021 SmartToken ALL RIGHTS RESERVED.
+ * Copyright Â© 2021 SmartToken ALL RIGHTS RESERVED.
  */
  
 /*
-Frictionless Yield Generation Smart Tokens. Simply Hold and Earn 
+HODL and Earn this Frictionless Yield Generation Smart Tokens.
 
 SmartToken (STOKE) apply a 1% fee to each transaction and distribute all token holders.
 
