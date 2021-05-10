@@ -1,6 +1,4 @@
-/**
- * Copyright©2021 SmartToken ALL RIGHTS RESERVED.
-*/
+// SPDX-License-Identifier: Unlicensed
  
 /**
 * HODL and Earn this Frictionless Yield Generation Smart Tokens.
@@ -10,7 +8,6 @@
 * No staking required in this smart contract. Fees are awarded by the Contract.
 */
 
- // SPDX-License-Identifier: Unlicensed
 
 pragma solidity ^0.6.12;
 
