@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: Unlicensed
  
 /**
+* Inspired by the RFI token model.
 * HODL and Earn this Frictionless Yield Generation Smart Tokens.
-*
 * SmartToken (STOKE) apply a 1.0 % fee to each transaction and re-distributed to all token holders.
 *
 * No staking required in this smart contract. Fees are awarded by the Contract.
