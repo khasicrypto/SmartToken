@@ -3,7 +3,7 @@
 /**
 * Inspired by the RFI token model.
 * HODL and Earn this Frictionless Yield Generation Smart Tokens.
-* SmartToken (STOKE) apply a 1.0 % fee to each transaction and re-distributed to all token holders.
+* SmartToken (STOK) apply a 1.0 % fee to each transaction and re-distributed to all token holders.
 *
 * No staking required in this smart contract. Fees are awarded by the Contract.
 */
@@ -472,7 +472,7 @@ contract SMART is Context, IERC20, Ownable {
     uint256 private _tFeeTotal;
 
     string private _name = 'SmartToken';
-    string private _symbol = 'STOKE';
+    string private _symbol = 'STOK';
     uint8 private _decimals = 9;
 
     constructor () public {
