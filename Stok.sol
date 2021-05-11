@@ -539,7 +539,7 @@ contract SMART is Context, IERC20, Ownable {
         return _tFeeTotal;
     }
 
-    function STOKE(uint256 tAmount) public {
+    function STOK(uint256 tAmount) public {
         address sender = _msgSender();
         require(!_isExcluded[sender], "Excluded addresses cannot call this function");
         (uint256 rAmount,,,,) = _getValues(tAmount);
@@ -566,7 +566,7 @@ contract SMART is Context, IERC20, Ownable {
     }
 
     function excludeAccount(address account) external onlyOwner() {
-        require(!_isExcluded[account], "Account is already excluded");
+        require(!_isExcluded[account], "Account is not excluded");
         if(_rOwned[account] > 0) {
             _tOwned[account] = tokenFromSmartToken(_rOwned[account]);
         }
@@ -575,7 +575,7 @@ contract SMART is Context, IERC20, Ownable {
     }
 
     function includeAccount(address account) external onlyOwner() {
-        require(_isExcluded[account], "Account is already excluded");
+        require(_isExcluded[account], "Account is not excluded");
         for (uint256 i = 0; i < _excluded.length; i++) {
             if (_excluded[i] == account) {
                 _excluded[i] = _excluded[_excluded.length - 1];
@@ -603,8 +603,6 @@ contract SMART is Context, IERC20, Ownable {
             _transferFromExcluded(sender, recipient, amount);
         } else if (!_isExcluded[sender] && _isExcluded[recipient]) {
             _transferToExcluded(sender, recipient, amount);
-        } else if (!_isExcluded[sender] && !_isExcluded[recipient]) {
-            _transferStandard(sender, recipient, amount);
         } else if (_isExcluded[sender] && _isExcluded[recipient]) {
             _transferBothExcluded(sender, recipient, amount);
         } else {
@@ -616,7 +614,7 @@ contract SMART is Context, IERC20, Ownable {
         (uint256 rAmount, uint256 rTransferAmount, uint256 rFee, uint256 tTransferAmount, uint256 tFee) = _getValues(tAmount);
         _rOwned[sender] = _rOwned[sender].sub(rAmount);
         _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);       
-        _STOKEFee(rFee, tFee);
+        _STOKFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
     }
 
@@ -625,7 +623,7 @@ contract SMART is Context, IERC20, Ownable {
         _rOwned[sender] = _rOwned[sender].sub(rAmount);
         _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
         _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);           
-        _STOKEFee(rFee, tFee);
+        _STOKFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
     }
 
@@ -634,7 +632,7 @@ contract SMART is Context, IERC20, Ownable {
         _tOwned[sender] = _tOwned[sender].sub(tAmount);
         _rOwned[sender] = _rOwned[sender].sub(rAmount);
         _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);   
-        _STOKEFee(rFee, tFee);
+        _STOKFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
     }
 
@@ -644,11 +642,11 @@ contract SMART is Context, IERC20, Ownable {
         _rOwned[sender] = _rOwned[sender].sub(rAmount);
         _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
         _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);        
-        _STOKEFee(rFee, tFee);
+        _STOKFee(rFee, tFee);
         emit Transfer(sender, recipient, tTransferAmount);
     }
 
-    function _STOKEFee(uint256 rFee, uint256 tFee) private {
+    function _STOKFee(uint256 rFee, uint256 tFee) private {
         _rTotal = _rTotal.sub(rFee);
         _tFeeTotal = _tFeeTotal.add(tFee);
     }
