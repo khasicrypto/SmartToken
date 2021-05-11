@@ -1,2 +1,2 @@
 # SmartToken
-STOKE
+STOK
